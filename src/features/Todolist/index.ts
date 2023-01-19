@@ -1,1 +1,5 @@
 export { todoReducer } from './models/slice/todoSlice'
+export { fetchTodos } from './models/services/fetchTodos/fetchTodos'
+export { getTodos } from './models/selectors/getTodos'
+export { getTodoError } from './models/selectors/getTodoError'
+export { getTodoLoading } from './models/selectors/getTodoLoading'

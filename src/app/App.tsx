@@ -1,3 +1,9 @@
+import { MainPage } from '../pages/MainPage'
+
 export const App = () => {
-  return <div className='app'>Hello</div>
+  return (
+    <div className='app'>
+      <MainPage />
+    </div>
+  )
 }
