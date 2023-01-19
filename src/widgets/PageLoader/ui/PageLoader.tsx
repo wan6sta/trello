@@ -11,7 +11,7 @@ export const PageLoader: FC<Props> = memo(({ isLoading }) => {
 
   return (
     <div className={cls.PageLoader}>
-      <BarLoader width='100%' color='#8DDBE0' />
+      <BarLoader width='100%' color='#83C9F4' />
     </div>
   )
 })

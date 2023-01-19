@@ -1,6 +1,5 @@
 import cls from './EditableSpan.module.scss'
 import { ChangeEvent, FC, memo, useState } from 'react'
-import { Input } from 'shared/ui/Input/Input'
 
 interface Props {
   initialValue: string
@@ -27,7 +26,7 @@ export const EditableSpan: FC<Props> = memo(props => {
   return (
     <div className={cls.EditableSpan} onClick={showHandler}>
       {isOpen ? (
-        <Input
+        <input
           value={inputValue}
           onChange={changeInputValueHandler}
           onBlur={saveHandler}
