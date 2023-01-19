@@ -21,11 +21,13 @@ const todoSlice = createSlice({
     builder
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.isLoading = false
+
         state.data = action.payload
       })
       .addCase(addTodo.fulfilled, (state, action) => {
         state.isLoading = false
-        state.data.push(action.payload)
+
+        state.data.unshift(action.payload)
       })
       .addCase(deleteTodo.fulfilled, (state, action) => {
         state.isLoading = false
@@ -38,10 +40,10 @@ const todoSlice = createSlice({
       .addCase(updateTodoTitle.fulfilled, (state, action) => {
         state.isLoading = false
         const { todoId, title } = action.payload
-        const todoUpdate = state.data.find(todo => todo.id === todoId)
-        if (!todoUpdate) return
+        const todoUpdateIndex = state.data.findIndex(todo => todo.id === todoId)
+        if (todoUpdateIndex === -1) return
 
-        todoUpdate.title = title
+        state.data[todoUpdateIndex].title = title
       })
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.isLoading = false

@@ -49,8 +49,20 @@ export interface UpdateTaskModel {
   deadline: string
 }
 
-export interface ChangeTaskArgs {
+export interface UpdateTaskArgs {
   taskId: string
   todoId: string
   newTask: UpdateTaskModel
+}
+
+export interface PartialUpdateTaskArgs {
+  taskId: string
+  todoId: string
+  newTask: Partial<UpdateTaskModel>
+}
+
+export interface TaskInitialState {
+  error: string | null
+  isLoading: boolean
+  data: Record<string, TaskModel[]>
 }

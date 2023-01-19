@@ -1,1 +1,1 @@
-export {} from ''
+export { taskReducer } from './models/slice/taskSlice'

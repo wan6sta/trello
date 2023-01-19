@@ -2,11 +2,11 @@ import { AxiosResponse } from 'axios'
 import { apiInstance } from 'shared/config/apiInstance/apiInstance'
 import {
   AddNewTaskArgs,
-  ChangeTaskArgs,
   DefaultTaskResponse,
   DeleteTaskArgs,
   GetTasksResponse,
   TaskModel,
+  UpdateTaskArgs,
   UpdateTaskModel
 } from '../models/types/taskModel'
 
@@ -28,7 +28,7 @@ export const taskApi = {
       `/todo-lists/${todoId}/tasks/${taskId}`
     )
   },
-  updateTask: ({ todoId, taskId, newTask }: ChangeTaskArgs) => {
+  updateTask: ({ todoId, taskId, newTask }: UpdateTaskArgs) => {
     return apiInstance.put<
       undefined,
       AxiosResponse<DefaultTaskResponse<{ item: TaskModel }>>,
