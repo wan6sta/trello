@@ -1,6 +1,11 @@
 import cls from './MainPage.module.scss'
 import { useEffect } from 'react'
-import { fetchTodos, getTodoLoading, getTodos } from 'features/Todolist'
+import {
+  fetchTodos,
+  getTodoLoading,
+  getTodos,
+  Todolist
+} from 'features/Todolist'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch'
 import { useAppSelector } from 'shared/hooks/useAppSelector'
 import { PageLoader } from 'widgets/PageLoader'
@@ -19,7 +24,7 @@ export const MainPage = () => {
       <PageLoader isLoading={isLoading} />
       <div className={cls.MainPage}>
         {todolists?.map(todo => (
-          <div>{todo.title}</div>
+          <Todolist key={todo.id} title={todo.title} todoId={todo.id} />
         ))}
       </div>
     </>
