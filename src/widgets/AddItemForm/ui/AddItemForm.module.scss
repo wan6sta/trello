@@ -1,0 +1,46 @@
+.AddItemForm {
+
+}
+
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  user-select: none;
+  transition: 0.1s background-color ease-in-out;
+
+  &:hover {
+    background-color: #d3daff;
+  }
+
+  > svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.AddItemForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .saveCloseWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    > svg {
+      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.Input {
+  border-bottom: 1px solid #0079bf;
+  padding: 6px 0;
+  width: 100%;
+
+  &::placeholder {
+    font-size: 14px;
+  }
+}

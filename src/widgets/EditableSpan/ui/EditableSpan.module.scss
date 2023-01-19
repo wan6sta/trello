@@ -1,0 +1,12 @@
+.EditableSpan {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+
+  > input {
+    font-weight: 500;
+  }
+}
