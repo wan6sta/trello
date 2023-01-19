@@ -3,9 +3,8 @@ import { FC, memo, useEffect } from 'react'
 import { AddItemForm } from 'widgets/AddItemForm'
 import { EditableSpan } from 'widgets/EditableSpan'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch'
-import { fetchTasks, getTaskLoading, getTasks } from '../../Task'
+import { fetchTasks, getTaskLoading, getTasks, Task } from '../../Task'
 import { useAppSelector } from 'shared/hooks/useAppSelector'
-
 import { PageLoader } from 'widgets/PageLoader'
 
 interface Props {
@@ -26,13 +25,12 @@ export const Todolist: FC<Props> = memo(props => {
   return (
     <>
       <PageLoader isLoading={isLoading} />
-
       <div className={cls.Todolist}>
         <div className={cls.innerTodo}>
           <EditableSpan initialValue={title} />
           <div className={cls.tasks}>
             {tasks?.map(task => (
-              <div>{task.title}</div>
+              <Task key={task.id} task={task} />
             ))}
           </div>
           <AddItemForm title={'Add new todo'} />
