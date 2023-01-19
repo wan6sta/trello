@@ -17,8 +17,12 @@ export interface UpdateTodoTitleArgs {
   title: string
 }
 
+export interface TodoModelWithLoading extends TodoModel {
+  isLoading: boolean
+}
+
 export interface TodoInitialState {
   error: string | null
   isLoading: boolean
-  data: TodoModel[]
+  data: TodoModelWithLoading[]
 }

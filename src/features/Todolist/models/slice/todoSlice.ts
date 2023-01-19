@@ -6,6 +6,7 @@ import { isPending } from 'shared/lib/action/isPending/isPending'
 import { addTodo } from '../services/addTodo/addTodo'
 import { deleteTodo } from '../services/deleteTodo/deleteTodo'
 import { updateTodoTitle } from '../services/updateTodoTitle/updateTodoTitle'
+import { isFulfilled } from 'shared/lib/action/isFulfilled/isFulfilled'
 
 const initialState: TodoInitialState = {
   data: [],
@@ -19,18 +20,20 @@ const todoSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
+      .addCase(fetchTodos.pending, state => {
+        state.isLoading = true
+      })
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        state.isLoading = false
-
-        state.data = action.payload
+        state.data = action.payload.map(todo => ({ ...todo, isLoading: false }))
+      })
+      .addCase(addTodo.pending, state => {
+        state.isLoading = true
       })
       .addCase(addTodo.fulfilled, (state, action) => {
-        state.isLoading = false
-
-        state.data.unshift(action.payload)
+        const newTodo = { ...action.payload, isLoading: false }
+        state.data.unshift(newTodo)
       })
       .addCase(deleteTodo.fulfilled, (state, action) => {
-        state.isLoading = false
         const todoId = action.payload
         const todoDeleteIndex = state.data.findIndex(todo => todo.id === todoId)
         if (todoDeleteIndex === -1) return
@@ -38,20 +41,21 @@ const todoSlice = createSlice({
         state.data.splice(todoDeleteIndex, 1)
       })
       .addCase(updateTodoTitle.fulfilled, (state, action) => {
-        state.isLoading = false
         const { todoId, title } = action.payload
         const todoUpdateIndex = state.data.findIndex(todo => todo.id === todoId)
         if (todoUpdateIndex === -1) return
 
         state.data[todoUpdateIndex].title = title
       })
+      .addMatcher(isPending('todo'), state => {
+        state.error = null
+      })
+      .addMatcher(isFulfilled('todo'), state => {
+        state.isLoading = false
+      })
       .addMatcher(isError('todo'), (state, action: PayloadAction<string>) => {
         state.isLoading = false
         state.error = action.payload
-      })
-      .addMatcher(isPending('todo'), state => {
-        state.error = null
-        state.isLoading = true
       })
   }
 })
