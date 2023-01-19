@@ -1,0 +1,11 @@
+.AutoResizeTextarea {
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,8 +1,57 @@
 .Task {
+  padding: 8px 3px;
+  cursor: pointer;
   box-shadow: 1px 5px 5px -2px #cccccc;
-  padding: 12px 3px;
+  transition: 0.1s background-color ease-in;
+  position: relative;
 
   .taskTitle {
     word-break: break-all;
+  }
+
+  &:hover {
+    background-color: rgba(220, 220, 220, 0.82);
+  }
+
+  .pencilIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    opacity: 0.8;
+    transition: 0.1s ease-in-out;
+
+    &:hover {
+      background-color: white;
+      opacity: 1;
+    }
+
+    > svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.EditTask {
+  box-shadow: 1px 5px 5px -2px #cccccc;
+  padding: 3px;
+
+  > textarea {
+    width: 100%;
+    max-width: 300px;
+    //overflow: hidden;
+    //overflow-wrap: break-word;
+    //resize: none;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
