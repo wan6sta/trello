@@ -18,8 +18,8 @@ export enum TaskStatus {
 
 export interface DefaultTaskResponse<T = {}> {
   data: T
-  fieldsErrors: string[]
   messages: string[]
+  fieldsErrors: string[]
   resultCode: number
 }
 

@@ -6,13 +6,19 @@ export interface TodoModel {
 }
 
 export interface DefaultTodoResponse<T = {}> {
-  resultCode: number
+  data: T
   messages: string[]
   fieldsErrors: string[]
-  data: T
+  resultCode: number
 }
 
 export interface UpdateTodoTitleArgs {
   todoId: string
   title: string
+}
+
+export interface TodoInitialState {
+  error: string | null
+  isLoading: boolean
+  data: TodoModel[]
 }
