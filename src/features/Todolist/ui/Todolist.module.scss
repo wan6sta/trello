@@ -1,3 +1,10 @@
 .Todolist {
-  
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 4px 4px 4px -3px #888888;
 }

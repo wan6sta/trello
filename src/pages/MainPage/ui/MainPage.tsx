@@ -23,9 +23,11 @@ export const MainPage = () => {
     <>
       <PageLoader isLoading={isLoading} />
       <div className={cls.MainPage}>
-        {todolists?.map(todo => (
-          <Todolist key={todo.id} title={todo.title} todoId={todo.id} />
-        ))}
+        <div className={cls.todolists}>
+          {todolists?.map(todo => (
+            <Todolist key={todo.id} title={todo.title} todoId={todo.id} />
+          ))}
+        </div>
       </div>
     </>
   )
