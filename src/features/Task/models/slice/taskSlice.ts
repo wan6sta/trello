@@ -51,11 +51,11 @@ const taskSlice = createSlice({
 
         state.data[todoId][taskIndex] = newTask
       })
-      .addMatcher(isError, (state, action: PayloadAction<string>) => {
+      .addMatcher(isError('task'), (state, action: PayloadAction<string>) => {
         state.isLoading = false
         state.error = action.payload
       })
-      .addMatcher(isPending, state => {
+      .addMatcher(isPending('task'), state => {
         state.error = null
         state.isLoading = true
       })

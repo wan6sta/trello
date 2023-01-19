@@ -1,18 +1,13 @@
 import cls from './MainPage.module.scss'
 import { useEffect } from 'react'
-import {
-  fetchTodos,
-  getTodoError,
-  getTodoLoading,
-  getTodos
-} from 'features/Todolist'
+import { fetchTodos, getTodoLoading, getTodos } from 'features/Todolist'
 import { useAppDispatch } from 'shared/hooks/useAppDispatch'
 import { useAppSelector } from 'shared/hooks/useAppSelector'
+import { PageLoader } from 'widgets/PageLoader'
 
 export const MainPage = () => {
   const dispatch = useAppDispatch()
   const todolists = useAppSelector(getTodos)
-  const error = useAppSelector(getTodoError)
   const isLoading = useAppSelector(getTodoLoading)
 
   useEffect(() => {
@@ -20,10 +15,13 @@ export const MainPage = () => {
   }, [])
 
   return (
-    <div className={cls.MainPage}>
-      {todolists?.map(todo => (
-        <div>{todo.title}</div>
-      ))}
-    </div>
+    <>
+      <PageLoader isLoading={isLoading} />
+      <div className={cls.MainPage}>
+        {todolists?.map(todo => (
+          <div>{todo.title}</div>
+        ))}
+      </div>
+    </>
   )
 }
